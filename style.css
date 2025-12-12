@@ -1,67 +1,43 @@
-body {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center; /* center left–right */
-  align-items: center; /* center top–bottom */
-  min-height: 100vh; /* full screen height */
+* {
+  background-color: #212121;
+  color: white;
+  box-sizing: border-box;
 }
 
-#megaBox {
-  align-items: center;
-}
+.mainBox {
+  border: 4px solid white;
+  width: 400px;
+  height: 400px;
 
-#mainBox {
-  width: 300px;
-  height: 300px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
 }
 
-#box {
-  /* width: 66.67px;
-  height: 66.67px; */
-  /* background-color: #3498db; */
-  border: 1px black solid;
+.box {
+  border: 2px solid black;
+
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
 }
 
-#smallbox {
-  width: 50.33px;
-  height: 20.33px;
-  /* background-color: #3498db; */
-  /* border: 1px black solid; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-/* 
-.input {
-  width: 100%;
-  height: 100%;
-  border: none;
-  background: transparent;
-  color: transparent;
-  caret-color: black; 
-  text-align: center;
-  font-size: 22px;
-} */
+.smallbox {
+  border: 1px solid white;
 
-input {
-  /* border: 1px solid black; */
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
 }
 
 .input-number {
   width: 100%;
   height: 100%;
-  border: 1px solid black;
-  background: transparent;
-  color: black;
-  caret-color: black;
+  font-size: 30px;
   text-align: center;
-  font-size: 22px;
-  /* background-color: #3498db; */
+
+  border: none;
+  outline: none;
+  background-color: #212121;
+  color: white;
 }
