@@ -34,43 +34,70 @@ document.querySelectorAll(".input-number").forEach((input) => {
     let [_, row, col] = id.split("_");
     let r = parseInt(row) - 1;
     let c = parseInt(col) - 1;
-    let value = event.target.value;
-  });
+    let value = parseInt(event.target.value);
 
-  if (presetInputArray[r][c] == solutionArray[r][c]) {
-    event.target.style.backgroundColor = "lightblue";
-  } else {
-    event.target.style.backgroundColor = "red";
-    mistakeCount++;
-    if (mistakeCount >= 3) {
-      Swal.fire({
-        title: "Game Over!",
-        text: "You made 3 mistakes.",
-        icon: "error",
-        iconColor: "#ff4d4d",
-        background: "#100f0fff",
-        color: "#ffffff",
-        confirmButtonText: "Try Again",
-        confirmButtonColor: "red",
-        width: "448px",
-        padding: "24px",
-      });
-      resetGame();
+    if (!event.target.value) {
+      event.target.style.backgroundColor = "#212121";
+      return;
     }
-  }
+    if (value == solutionArray[r][c]) {
+      event.target.style.backgroundColor = "lightblue";
+    } else {
+      event.target.style.backgroundColor = "red";
+      mistakeCount++;
+      if (mistakeCount >= 3) {
+        Swal.fire({
+          title: "Game Over!",
+          text: "You made 3 mistakes.",
+          icon: "error",
+          iconColor: "#ff4d4d",
+          background: "#100f0fff",
+          color: "#ffffff",
+          confirmButtonText: "Try Again",
+          confirmButtonColor: "red",
+          width: "448px",
+          padding: "24px",
+        });
+        resetGame();
+      }
+    }
+    console.log(mistakeCount);
+    console.log(value);
+  });
 });
 
 // Event listener for reset button
+
 document.getElementById("resetbtn").addEventListener("click", function () {
-  document.getElementById("cell_1_2").value = "";
-  document.getElementById("cell_1_2").style.backgroundColor = "#212121";
-  mistakeCount = 0;
-  console.log(mistakeCount);
+  Swal.fire({
+    title: "Reset Game?",
+    text: "Are you sure you want to reset the game?",
+    icon: "warning",
+    iconColor: "#ffcc00",
+    background: "#100f0fff",
+    color: "#ffffff",
+    showCancelButton: true,
+    confirmButtonText: "Yes, Reset",
+    cancelButtonText: "Cancel",
+    confirmButtonColor: "#ffcc00",
+    cancelButtonColor: "#555555",
+    width: "448px",
+    padding: "24px",
+  });
+  resetGame();
+
+  // document.getElementById("resetbtn").addEventListener("click", function () {
+  //   document.getElementById("cell_1_2").value = "";
+  //   document.getElementById("cell_1_2").style.backgroundColor = "#212121";
+  //   mistakeCount = 0;
+  //   console.log(mistakeCount);
 });
 
 // Function to reset the game
 function resetGame() {
-  document.getElementById("cell_1_2").value = "";
-  document.getElementById("cell_1_2").style.backgroundColor = "#212121";
+  document.querySelectorAll(".input-number").forEach((input) => {
+    input.value = "";
+    input.style.backgroundColor = "#212121";
+  });
   mistakeCount = 0;
 }
