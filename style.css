@@ -4,6 +4,12 @@
   box-sizing: border-box;
 }
 
+.megaBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .mainBox {
   border: 4px solid white;
   width: 400px;
@@ -35,6 +41,8 @@
   height: 100%;
   font-size: 30px;
   text-align: center;
+  font-weight: bold;
+  font-family: sans-serif;
 
   border: none;
   outline: none;

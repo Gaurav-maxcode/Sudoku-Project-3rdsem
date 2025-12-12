@@ -1,9 +1,16 @@
-let inputNumber = document.getElementById("smallbox");
-inputNumber.addEventListener("input", function () {
-  // Allow only digits
-  this.value = this.value.replace(/[^0-9]/g, "");
-  // Limit to only 1 character
-  if (this.value.length > 1) {
-    this.value = this.value.slice(0, 1);
+let mistakeCount = 0;
+
+document.getElementById("cell_1_2").addEventListener("input", function (event) {
+  let inputNumber = event.target.value;
+  if (mistakeCount > 3) {
+    if (inputNumber == 1) {
+      document.getElementById("cell_1_2").style.backgroundColor = "lightblue";
+    } else {
+      document.getElementById("cell_1_2").style.backgroundColor = "red";
+      mistakeCount++;
+    }
   }
+  console.log(mistakeCount);
+
+  console.log(inputNumber);
 });
