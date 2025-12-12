@@ -102,12 +102,26 @@ function resetGame() {
   mistakeCount = 0;
 }
 
+// Event listener for solve button
+document.getElementById("solve").addEventListener("click", function () {
+  solveGame();
+});
+
+// Function to solve the game
 function solveGame() {
-    document.querySelectorAll(".input-number").forEach((input) => {
-        let id = input.id;
-        let [_, row, col] = id.split("_");
-        let r = parseInt(row) - 1;  
-        let c = parseInt(col) - 1;
-        input.value = solutionArray[r][c];
-        input.style.backgroundColor = "lightblue";
-    });
+  for (let r = 0; r < 9; r++) {
+    for (let c = 0; c < 9; c++) {
+      let cellId = document.getElementById(`cell_${r + 1}_${c + 1}`);
+      if (!cellId) continue;
+
+      if (presetInputArray[r][c] !== 0) {
+        cellId.value = solutionArray[r][c];
+        cellId.style.backgroundColor = "#ccc";
+        cellId.disabled = true;
+      } else {
+        cellId.value = solutionArray[r][c];
+        cellId.style.backgroundColor = "lightblue";
+      }
+    }
+  }
+}
