@@ -1,26 +1,18 @@
 let mistakeCount = 0;
 
-document.getElementById("cell_1_2").addEventListener("input", function (event) {
-  let inputNumber = event.target.value;
-  if (mistakeCount < 3) {
-    if (inputNumber == 1) {
-      document.getElementById("cell_1_2").style.backgroundColor = "lightblue";
-    } else {
-      document.getElementById("cell_1_2").style.backgroundColor = "red";
-      if (inputNumber == " ") {
-        mistakeCount = mistakeCount - 1;
-      } else {
-        mistakeCount = mistakeCount + 1;
-      }
-    }
-  } else if (mistakeCount == 3) {
-    alert("Game Over! You made 3 mistakes.");
-    resetGame();
-  }
-  console.log(mistakeCount);
-  console.log(inputNumber);
-});
+let presetInputArray = [
+  [8, 0, 0, 0, 0, 9, 0, 0, 0],
+  [0, 0, 6, 0, 0, 0, 0, 4, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 2],
+  [0, 3, 0, 0, 1, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 7, 8],
+  [6, 0, 0, 0, 4, 0, 0, 0, 0],
+  [0, 0, 0, 3, 0, 0, 6, 0, 0],
+  [0, 2, 0, 0, 0, 1, 0, 0, 0],
+  [0, 0, 9, 0, 0, 0, 0, 0, 1],
+];
 
+// Event listener for reset button
 document.getElementById("resetbtn").addEventListener("click", function () {
   document.getElementById("cell_1_2").value = "";
   document.getElementById("cell_1_2").style.backgroundColor = "#212121";
@@ -28,6 +20,7 @@ document.getElementById("resetbtn").addEventListener("click", function () {
   console.log(mistakeCount);
 });
 
+// Function to reset the game
 function resetGame() {
   document.getElementById("cell_1_2").value = "";
   document.getElementById("cell_1_2").style.backgroundColor = "#212121";
