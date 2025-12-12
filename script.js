@@ -101,3 +101,13 @@ function resetGame() {
   });
   mistakeCount = 0;
 }
+
+function solveGame() {
+    document.querySelectorAll(".input-number").forEach((input) => {
+        let id = input.id;
+        let [_, row, col] = id.split("_");
+        let r = parseInt(row) - 1;  
+        let c = parseInt(col) - 1;
+        input.value = solutionArray[r][c];
+        input.style.backgroundColor = "lightblue";
+    });
