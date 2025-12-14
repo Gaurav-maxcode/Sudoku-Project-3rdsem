@@ -61,12 +61,46 @@ document.querySelectorAll(".input-number").forEach((input) => {
         resetGame();
       }
     }
-    console.log(mistakeCount);
-    console.log(value);
   });
 });
+//     let newarr = [];
 
-// Event listener for reset button
+//     for (let r = 0; r < 9; r++) {
+//       for (let c = 0; c < 9; c++) {
+//         let cellId = document.getElementById(`cell_${r + 1}_${c + 1}`);
+//         if (!cellId || cellId.value === "") {
+//           newarr.push(" "); // empty cell
+//         } else {
+//           newarr.push(parseInt(cellId.value)); // convert to number
+//         }
+//       }
+//     }
+
+//     let complete = true;
+
+//     for (let i = 0; i < newarr.length; i++) {
+//       let r = Math.floor(i / 9);
+//       let c = i % 9;
+
+//       if (newarr[i] === " " || newarr[i] !== solutionArray[r][c]) {
+//         complete = false;
+//         break; // stop checking as soon as a problem is found
+//       }
+//     }
+
+//     if (complete) {
+//       Swal.fire({
+//         title: "Congratulations!",
+//         text: "You have successfully completed the Sudoku puzzle!",
+//         icon: "success",
+//         confirmButtonColor: "#00cc44",
+//       });
+//     }
+
+//     console.log(mistakeCount);
+//     console.log(value);
+//   });
+// });
 
 document.getElementById("resetbtn").addEventListener("click", function () {
   Swal.fire({
@@ -93,7 +127,6 @@ document.getElementById("resetbtn").addEventListener("click", function () {
   //   console.log(mistakeCount);
 });
 
-// Function to reset the game
 function resetGame() {
   document.querySelectorAll(".input-number").forEach((input) => {
     input.value = "";
@@ -102,12 +135,10 @@ function resetGame() {
   mistakeCount = 0;
 }
 
-// Event listener for solve button
 document.getElementById("solve").addEventListener("click", function () {
   solveGame();
 });
 
-// Function to solve the game
 function solveGame() {
   for (let r = 0; r < 9; r++) {
     for (let c = 0; c < 9; c++) {
